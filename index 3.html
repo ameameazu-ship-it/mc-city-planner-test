@@ -10,7 +10,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Noto+Sans+JP:wght@400;700&display=swap');
 *{-webkit-box-sizing:border-box;box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;}
-html,body{height:100%;overflow:hidden;background:#020b18;-webkit-text-size-adjust:100%;touch-action:manipulation;}
+html{height:100%;height:-webkit-fill-available;}body{height:100%;height:-webkit-fill-available;overflow:hidden;background:#020b18;-webkit-text-size-adjust:100%;touch-action:manipulation;}
 :root{
   --gold:#f5c842;
   --gold-dim:#c8941a;
@@ -26,7 +26,7 @@ html,body{height:100%;overflow:hidden;background:#020b18;-webkit-text-size-adjus
 body{font-family:'Noto Sans JP',sans-serif;}
 
 /* ===== APP ===== */
-#app{display:flex;flex-direction:column;height:100vh;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom);background:var(--bg);overflow:hidden;touch-action:manipulation;}
+#app{display:flex;flex-direction:column;height:100vh;height:100dvh;min-height:-webkit-fill-available;padding-top:env(safe-area-inset-top);background:var(--bg);overflow:hidden;touch-action:manipulation;}
 
 /* ===== TOPBAR ===== */
 #topbar{
@@ -162,7 +162,9 @@ body{font-family:'Noto Sans JP',sans-serif;}
 
 /* ===== BOTTOM BAR ===== */
 #bottom-bar{
-  display:flex;align-items:center;gap:6px;padding:8px 10px;
+  display:flex;align-items:center;gap:6px;
+  padding:8px 10px;
+  padding-bottom:calc(8px + env(safe-area-inset-bottom));
   background:linear-gradient(0deg,#0d2035 0%,#071828 100%);
   border-top:2px solid var(--gold);
   flex-shrink:0;min-height:68px;
@@ -426,7 +428,6 @@ body{font-family:'Noto Sans JP',sans-serif;}
   padding:10px 16px;
   background:linear-gradient(135deg,#0c2236,#071828);
   border-top:2px solid var(--gold);
-  border-bottom:none;
   white-space:nowrap;
   touch-action:manipulation;
   flex-shrink:0;
@@ -460,11 +461,11 @@ body{font-family:'Noto Sans JP',sans-serif;}
 #ai-panel{
   display:none;position:fixed;
   bottom:0;left:0;right:0;
+  padding-bottom:env(safe-area-inset-bottom);
   z-index:250;
   background:linear-gradient(180deg,#071828 0%,#050f1a 100%);
   border-top:2px solid var(--gold);
   max-height:60vh;
-  display:none;
   flex-direction:column;
 }
 #ai-panel.open{display:flex;}
